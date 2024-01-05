@@ -1,7 +1,6 @@
 import { LogDTO } from '@libs/shared';
 
 import { Client } from '@elastic/elasticsearch';
-// import { Readable } from 'stream';
 
 import { ConfigHelper } from '../../helpers';
 import { AbstractAdapter } from '../abstract.adapter';
@@ -12,8 +11,7 @@ export class ElasticsearchAdapter extends AbstractAdapter {
   constructor () {
     super();
     this.client = new Client({
-      // node: 'http://elasticsearch:9200',
-      node: 'http://localhost:9200',
+      node: 'http://elasticsearch:9200',
       auth: {
         username: 'elastic',
         password: 'YourElasticPassword',
@@ -39,12 +37,9 @@ export class ElasticsearchAdapter extends AbstractAdapter {
   public async read (path: string): Promise<string> {
     const result = await this.client.search({
       index: path,
-      // Add query details to fetch the required document
     });
 
-    // Process and return the result in a suitable format
     return JSON.stringify(result);
-    // return JSON.stringify(result.body.hits.hits);
   }
 
   public async getLastAddedTimestamp (index: string): Promise<string> {
