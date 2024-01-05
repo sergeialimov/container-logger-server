@@ -1,0 +1,1 @@
+export { RegistryService } from './services';

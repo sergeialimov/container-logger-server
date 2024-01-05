@@ -1,0 +1,371 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/resolver": {
+      "typescript": { }
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx"
+      ],
+      "extends": [
+        "plugin:@nrwl/nx/typescript",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:node/recommended",
+        "plugin:import/recommended"
+      ],
+      "plugins": [
+        "@nrwl/nx",
+        "@nx/eslint-plugin",
+        "@typescript-eslint",
+        "import"
+      ],
+      "rules": {
+        "import/namespace": "off",
+        // Nx's Code Quality rules
+        "@nrwl/nx/enforce-module-boundaries": [
+          "warn",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [ ],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": [
+                  "*"
+                ]
+              }
+            ]
+          }
+        ],
+        // Google Typescript's Code Quality rules
+        "block-scoped-var": "error",
+        "eqeqeq": "error",
+        "no-var": "error",
+        "prefer-spread": "off",
+        "prefer-const": [
+          "error",
+          {
+            "destructuring": "all"
+          }
+        ],
+        "no-restricted-properties": [
+          "error",
+          {
+            "object": "describe",
+            "property": "only"
+          },
+          {
+            "object": "it",
+            "property": "only"
+          }
+        ],
+        "@typescript-eslint/no-non-null-assertion": "error",
+        "@typescript-eslint/no-use-before-define": "error",
+        "no-warning-comments": [
+          "warn",
+          {
+            "terms": [
+              "fix",
+              "fixme",
+              "todo"
+            ]
+          }
+        ],
+        "@typescript-eslint/no-empty-function": "warn",
+        "@typescript-eslint/no-var-requires": "error",
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/ban-types": "error",
+        "camelcase": [
+          "warn",
+          {
+            "ignoreGlobals": true,
+            "allow": [
+              "^UNSAFE_"
+            ]
+          }
+        ],
+        "node/no-missing-import": "off",
+        "node/no-unpublished-import": "off",
+        "node/no-unpublished-require": "off",
+        "node/no-unsupported-features/es-syntax": "off",
+        "node/no-extraneous-import": "off",
+        // this is to allow function overloading
+        "no-dupe-class-members": "off",
+        "@typescript-eslint/no-dupe-class-members": [
+          "error"
+        ],
+        "require-atomic-updates": "error",
+        "@typescript-eslint/parameter-properties": [
+          "error",
+          {
+            "allow": [
+              "private readonly",
+              "protected readonly"
+            ]
+          }
+        ],
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/explicit-module-boundary-types": "error",
+        "@typescript-eslint/no-shadow": [
+          "warn"
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "vars": "local",
+            "args": "none",
+            "argsIgnorePattern": "^_",
+            "ignoreRestSiblings": true
+          }
+        ],
+        "rest-spread-spacing": "error",
+        "no-underscore-dangle": "error",
+        "no-useless-escape": "error",
+        "consistent-return": "error",
+        "prefer-arrow-callback": "off",
+        "no-console": "error",
+        "no-cond-assign": "error",
+        "no-confusing-arrow": "error",
+        "class-methods-use-this": "off",
+        "no-else-return": [
+          "error",
+          {
+            "allowElseIf": true
+          }
+        ],
+        "no-useless-return": "error",
+        "import/no-extraneous-dependencies": "off",
+        "import/extensions": "off",
+        "import/prefer-default-export": "off",
+        "import/no-unresolved": "off",
+        "import/no-absolute-path": [
+          "error"
+        ],
+        "import/no-named-as-default": "off",
+        "@typescript-eslint/consistent-type-definitions": [
+          "warn",
+          "interface"
+        ],
+        "@typescript-eslint/no-namespace": "off",
+        // Formatting rules
+        "eol-last": "error",
+        "no-trailing-spaces": "error",
+        "@typescript-eslint/space-before-function-paren": [
+          "error",
+          "always"
+        ],
+        "@typescript-eslint/type-annotation-spacing": "error",
+        "@typescript-eslint/quotes": [
+          "error",
+          "single",
+          {
+            "avoidEscape": true,
+            "allowTemplateLiterals": true
+          }
+        ],
+        "@typescript-eslint/indent": [
+          "error",
+          2,
+          {
+            "SwitchCase": 1,
+            "VariableDeclarator": 1,
+            "outerIIFEBody": 1,
+            "MemberExpression": 1,
+            "StaticBlock": {
+              "body": 1
+            },
+            "ArrayExpression": 1,
+            "FunctionDeclaration": {
+              "parameters": 1,
+              "body": 1
+            },
+            "FunctionExpression": {
+              "parameters": 1,
+              "body": 1
+            },
+            "CallExpression": {
+              "arguments": 1
+            },
+            "ignoredNodes": [
+              "PropertyDefinition"
+            ]
+          }
+        ],
+        "@typescript-eslint/brace-style": [
+          "error",
+          "1tbs"
+        ],
+        "brace-style": "off",
+        "indent": "off",
+        "function-paren-newline": [
+          "error",
+          "multiline-arguments"
+        ],
+        "arrow-parens": [
+          "error",
+          "always"
+        ],
+        "arrow-body-style": [
+          "error",
+          "as-needed"
+        ],
+        "array-bracket-newline": [
+          "error",
+          {
+            "multiline": true
+          }
+        ],
+        "array-bracket-spacing": [
+          "error",
+          "always",
+          {
+            "arraysInArrays": false,
+            "objectsInArrays": false
+          }
+        ],
+        "array-element-newline": [
+          "error",
+          "consistent"
+        ],
+        "object-curly-newline": [
+          "error",
+          {
+            "multiline": true,
+            "consistent": true
+          }
+        ],
+        "object-curly-spacing": [
+          "error",
+          "always",
+          {
+            "objectsInObjects": false
+          }
+        ],
+        "object-property-newline": [
+          "error",
+          {
+            "allowAllPropertiesOnSameLine": true
+          }
+        ],
+        "newline-per-chained-call": [
+          "error",
+          {
+            "ignoreChainWithDepth": 4
+          }
+        ],
+        "curly": [
+          "error",
+          "all"
+        ],
+        "comma-dangle": [
+          "error",
+          {
+            "arrays": "always-multiline",
+            "objects": "always-multiline",
+            "imports": "always-multiline",
+            "exports": "always-multiline",
+            "functions": "always-multiline"
+          }
+        ],
+        "max-len": [
+          "error",
+          {
+            "code": 125,
+            "comments": 125,
+            "ignoreStrings": true,
+            "ignoreUrls": true,
+            "ignoreTemplateLiterals": true,
+            "ignoreComments": true
+          }
+        ],
+        "import/no-default-export": "warn",
+        "no-restricted-syntax": [
+          "error",
+          "ExportAllDeclaration"
+        ],
+        // Base JS rules that need to be disabled to let @typescript/ rules work
+        "quotes": "off",
+        "space-before-function-paren": "off",
+        "no-unused-vars": "off",
+        "no-shadow": "off",
+        "no-use-before-define": "off",
+        "no-empty-function": "off",
+        // this is for sorting imports
+        "import/order": [
+          "warn",
+          {
+            "groups": [
+              [
+                "external",
+                "builtin"
+              ],
+              "internal",
+              [
+                "sibling",
+                "parent"
+              ],
+              "index"
+            ],
+            "pathGroups": [
+              {
+                "pattern": "react",
+                "group": "external",
+                "position": "before"
+              },
+              {
+                "pattern": "@/**",
+                "group": "internal",
+                "position": "before"
+              },
+              {
+                "pattern": "@libs/*",
+                "group": "external",
+                "position": "before"
+              },
+              {
+                "pattern": "@nestjs/*",
+                "group": "external",
+                "position": "before"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": [
+              "react"
+            ],
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
+          }
+        ],
+        "no-multiple-empty-lines": [
+          2,
+          {
+            "max": 1,
+            "maxEOF": 0,
+            "maxBOF": 0
+          }
+        ],
+        // Additional rules
+        "keyword-spacing": "error"
+      }
+    },
+    {
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
+      "extends": [
+        "plugin:@nrwl/nx/javascript"
+      ],
+      "rules": { }
+    }
+  ]
+}

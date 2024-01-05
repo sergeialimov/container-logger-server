@@ -1,0 +1,21 @@
+export const CONFIG_SERVICE_INTERFACE_TOKEN = 'ConfigServiceInterfaceToken';
+export const VAULT_SERVICE_INTERFACE_TOKEN = 'VaultServiceInterfaceToken';
+export const CONFIGURATION_SERVICE_TOKEN_LOCAL = 'CONFIGURATION_SERVICE_TOKEN_LOCAL';
+export const CONFIGURATION_TOKEN_LOCAL = 'CONFIGURATION_TOKEN_LOCAL';
+export const ENV_DIR = 'env';
+
+export enum ENVIRONMENT {
+  PRODUCTION = 'prod',
+  DEVELOPMENT = 'dev',
+  STAGING = 'staging',
+  TEST = 'test',
+}
+
+export enum ENVIRONMENT_MAPPING {
+  production = ENVIRONMENT.PRODUCTION,
+  prod = ENVIRONMENT.PRODUCTION,
+  development = ENVIRONMENT.DEVELOPMENT,
+  dev = ENVIRONMENT.DEVELOPMENT,
+  staging = ENVIRONMENT.STAGING,
+  test = ENVIRONMENT.TEST,
+}

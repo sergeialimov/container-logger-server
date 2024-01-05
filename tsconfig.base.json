@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2022"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@libs/config": ["libs/config/src/index.ts"],
+      "@libs/console/*": ["libs/console/src/*"],
+      "@libs/storage": ["libs/storage/src/index.ts"],
+      "@libs/shared": ["libs/shared/src/index.ts"],
+      "@libs/shared/backend": ["libs/shared/src/backend.index.ts"],
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

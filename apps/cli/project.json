@@ -1,0 +1,104 @@
+{
+  "name": "cli",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cli/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "development",
+      "options": {
+        "generatePackageJson": true,
+        "outputPath": "dist/apps/cli",
+        "main": "apps/cli/src/main.ts",
+        "tsConfig": "apps/cli/tsconfig.app.json",
+        "isolatedConfig": false,
+        "target": "node",
+        "compiler": "tsc",
+        "sourceMap": true,
+        "extractLicenses": false,
+        "additionalEntryPoints": [
+          {
+            "entryName": "console",
+            "entryPath": "apps/cli/src/console.ts"
+          }
+        ]
+      },
+      "configurations": {
+        "development": {
+          "optimization": false
+        },
+        "staging": {
+          "optimization": false,
+          "extractLicenses": true
+        },
+        "production": {
+          "optimization": true,
+          "extractLicenses": true
+        }
+      },
+      "dependsOn": [
+        {
+          "target": "build-migrations"
+        }
+      ]
+    },
+    "build-all": {
+      "executor": "nx:noop",
+      "dependsOn": ["build"]
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "cli:build",
+        "inspect": true,
+        "runBuildTargetDependencies": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "cli:build:development"
+        },
+        "staging": {
+          "buildTarget": "cli:build:staging"
+        },
+        "prod": {
+          "buildTarget": "cli:build:prod"
+        },
+        "production": {
+          "buildTarget": "cli:build:production"
+        }
+      }
+    },
+    "serve-console": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "node dist/apps/cli/console.js",
+            "forwardAllArgs": true
+          }
+        ],
+        "parallel": false
+      },
+      "dependsOn": ["build-all"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/cli/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/cli"],
+      "options": {
+        "jestConfig": "apps/cli/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
